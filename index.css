@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--background-color: #edf2f4;
+	--color-primary: #0d160b;
+	--color-secondary: #2a4494;
+}
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+.container {
+	margin: 2rem;
+	padding: 2rem;
+	min-height: 100vh;
+	background-color: var(--background-color);
+	border-radius: .5rem;
+	color: var(--color-secondary);
+	font-size: 1.6rem;
+	font-family: "Montserrat", serif;
+	position: relative;
+	transition: all 0.3s ease;
+}
+
+#books {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#book-display {
+	min-height: 100vh;
+}
+
+#book-display h1 {
+	text-align: center;
+	text-transform: uppercase;
+	font-family: "Oswald", serif;
+	font-size: 3rem;
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 2px solid var(--color-secondary);
+}
+
+a#add,
+a#submit {
+	display: block;
+	margin: 2rem auto;
+	text-decoration: none;
+	text-transform: capitalize;
+	background-color: var(--background-color);
+	color: var(--color-secondary);
+	box-shadow: 0 0 0 1px var(--color-primary);
+	padding: 1rem;
+	text-align: center;
+	border-radius: .5rem;
+	width: 33%;
+	transition: transform 0.3s ease;
+}
+
+a.remove {
+	background-color: var(--color-secondary);
+	color: var(--background-color);
+	position: relative;
+	z-index: 999;
+	padding: 1rem;
+	border-radius: .5rem;
+	width: 100%;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+}
+
+a.remove:hover {
+	background-color: var(--background-color);
+	color: var(--color-secondary);
+	box-shadow: none;
+}
+input#submit {
+	border: 1px solid !important;
+	width: 66.66%;
+	display: block;
+	margin: auto;
+	text-transform: capitalize;
+}
+
+/* toggle */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--background-color);
+	transition: .4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--color-primary);
+	transition: .4s;
+}
+
+input:checked + .slider {
+	background-color: var(--background-color);
+}
+
+/* input:focus + .slider {
+  box-shadow: 0 0 0 4px rgba(21, 156, 228, 0.7);
+  outline: none;
+} */
+
+input:checked + .slider:before {
+	transform: translateX(26px);
+	background-color: var(--color-secondary);
+}
+
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+/* end togggle */
+.book {
+	margin: 1rem;
+	padding: 2rem 1rem;
+	color: var(--color-primary);
+	border-radius: 0.2rem;
+	font-weight: 700;
+	min-width: 30rem;
+	transition: transform 0.3s ease-out;
+	overflow: hidden;
+}
+.book .book-card-img {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.book.read {
+	transition: all .3s ease;
+}
+.read::after {
+	position: absolute;
+	content: "Read";
+	top: 15px;
+	text-align: center;
+	right: -25px;
+	height: 2.5rem;
+	transform: rotate(45deg);
+	width: 100px;
+	background-color: var(--background-color);
+}
+.book.del-animation {
+	animation: delete 2s ease-out;
+	animation-fill-mode: backwards;
+	-webkit-animation-fill-mode: backwards;
+}
+@keyframes delete {
+	0% {
+		transform: rotate(-3deg);
+	}
+	50% {
+		opacity: 0.5;
+	}
+	75% {
+		transform: skew(5deg, 5deg);
+		transform: translateY(-200%);
+		opacity: 0;
+	}
+	100% {
+		animation-play-state: paused;
+	}
+}
+@-webkit-keyframes delete {
+	0% {
+		transform: rotate(-3deg);
+	}
+	50% {
+		opacity: 0.5;
+	}
+	75% {
+		transform: skew(5deg, 5deg);
+		transform: translateY(-200%);
+		opacity: 0;
+	}
+	100% {
+		animation-play-state: paused;
+	}
+}
+@media screen and (max-width: 768px) {
+	.book {
+		flex: 1;
+		min-width: max-content;
+	}
+	#addbook {
+		width: 90% !important;
+	}
+	a#submit,
+	a#add {
+		width: 100% !important;
+	}
+}
+.book.bg-1 {
+	background-color: pink;
+	filter: drop-shadow(2px 4px 6px pink) !important;
+}
+.book.bg-2 {
+	background-color: goldenrod;
+	filter: drop-shadow(2px 4px 6px goldenrod) !important;
+}
+.book.bg-3 {
+	background-color: hotpink;
+	filter: drop-shadow(2px 4px 6px hotpink) !important;
+}
+.book.bg-4 {
+	background-color: skyblue;
+	filter: drop-shadow(2px 4px 6px skyblue) !important;
+}
+
+.book .isRead {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+.book:hover {
+	transform: translateY(-4px);
+}
+a#add:hover {
+	cursor: pointer;
+	background-color: var(--color-secondary);
+	box-shadow: none;
+	color: var(--background-color);
+}
+.book h3 {
+	font-family: "Oswald", serif;
+	width: 100%;
+	font-weight: 400;
+}
+.fa,
+.fas {
+	padding-left: 1rem;
+}
+.book p {
+	padding: 1rem;
+	background: var(--background-color);
+	color: var(--color-primary);
+	text-transform: capitalize;
+	margin: 1rem auto;
+	border-radius: 1rem;
+}
+
+.book p.isReadStatus {
+	margin: 1rem 0 1rem;
+	width: 66.66%;
+}
+#form {
+	height: 1px;
+	overflow: hidden;
+	transition: all .4s ease;
+}
+#addbook {
+	width: 50%;
+	max-height: 0;
+	overflow: hidden;
+	background-color: var(--background-color);
+	filter: drop-shadow(2px 4px 6px);
+
+	position: absolute;
+	display: flex;
+	left: 50%;
+	top: 20%;
+	transform: translateX(-50%);
+	flex-direction: column;
+
+	color: var(--color-secondary);
+	transition: all .4s ease-in-out;
+}
+
+#addbook.show {
+	max-height: 1000px;
+	outline: 1px solid var(--color-secondary);
+	padding: 2rem;
+	overflow: visible;
+	transition: all .4s ease-in-out;
+}
+
+#addbook input {
+	height: 35px;
+	padding: 0.5rem;
+	border: none;
+	border-bottom: 1px solid var(--color-primary);
+	background-color: transparent;
+	margin-bottom: 1rem;
+	color: var(--color-primary);
+	font-size: 1.6rem;
+	font-family: "Montserrat", serif;
+}
+#addbook input:focus {
+	outline: none;
+}
+#addbook input[type="radio"] {
+	margin: 0 !important;
+}
+#addbook .radio span {
+	display: inline-flex;
+	align-items: center;
+}
+#addbook .radio span:nth-of-type(1) {
+	margin-right: 2rem;
+}
+#addbook .radio span label {
+	padding-right: 1rem;
+	text-transform: capitalize;
+}

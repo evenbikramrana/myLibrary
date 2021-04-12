@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  </head>
+  <body>
+    <div class="container">
+      <div id="book-display">
+        <h1>My Library</h1>
+        <a id="add" href="#">Add a new book</a>
+        <div id="books"></div>
+      </div>
+      <div id="form" class="form">
+        <form action="" id="addbook" >
+          <h1>Add a new Book</h1>
+          <label for="title">Title</label>
+          
+          <input required pattern="[a-zA-Z0-9\s\t]+" minlength="4" type="text" id="title" autocomplete="off" />
+          <label  for="author">Author</label>
+          <input required pattern="[a-zA-Z\s\t]+" minlength="4" type="text" id="author" autocomplete="off" />
+          <label for="pagecount">Page Count</label>
+          <input required type="number" id="pagecount" />
+          <h3>Have You read it?</h3>
+          <div class="radio" id="radio">
+            <span id="radio1"
+              ><label for="yes">yes</label>
+              <input required type="radio" name="selection" id="yes"
+            /></span>
+            <span id="radio2"
+              ><label for="no">no</label>
+              <input required type="radio" name="selection" id="no"
+            /></span>
+          </div>
+          <input type="submit" id="submit" value="add">
+        </form>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
